@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func lengthOfLongestSubstring(s string) int{
 	lastOccurred := make(map[byte]int)
@@ -8,6 +10,7 @@ func lengthOfLongestSubstring(s string) int{
 	maxLength := 0
 
 	for i, ch := range []byte(s) {
+		fmt.Println(ch, i)
 		if lastI, ok := lastOccurred[ch]; ok && lastI >= start {
 			start = lastOccurred[ch] + 1
 		}
@@ -17,11 +20,4 @@ func lengthOfLongestSubstring(s string) int{
 		lastOccurred[ch] = i
 	}
 	return maxLength
-}
-
-
-func main() {
-	s1 := "abcabcbb"
-	s1MaxLength := lengthOfLongestSubstring(s1)
-	fmt.Println(s1MaxLength)
 }
