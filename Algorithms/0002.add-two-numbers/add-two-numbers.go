@@ -6,11 +6,12 @@ package _002_add_two_numbers
 *     Val int
 *     Next *ListNode
 * }
-*/
- type ListNode struct {
-	     Val int
-	     Next *ListNode
- }
+ */
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	resPre := &ListNode{}
 	cur := resPre

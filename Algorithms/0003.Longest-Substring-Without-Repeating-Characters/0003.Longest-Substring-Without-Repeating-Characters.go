@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func lengthOfLongestSubstring(s string) int{
+func lengthOfLongestSubstring(s string) int {
 	lastOccurred := make(map[byte]int)
 	start := 0
 	maxLength := 0
