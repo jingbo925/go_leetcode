@@ -6,33 +6,22 @@ package tree
 *     Right *TreeNode
 * }
  */
-
-func isSameTree(p *TreeNode, q *TreeNode) bool {
-	if p == nil || q == nil {
-		return false
-	}
-
-	if p == nil && q == nil {
-		return true
-	}
-
-	return q.Val == p.Val && isSameTree(q.Left, p.Left) && isSameTree(q.Right, p.Right)
-
-}
-
-func invertTree(root *TreeNode) *TreeNode {
-	if root == nil {
-		return root
-	}
-	invertTree(root.Left)
-	invertTree(root.Right)
-	root.Left, root.Right = root.Right, root.Left
-	return root
-}
-
 func isSymmetric(root *TreeNode) bool {
 	if root == nil {
 		return true
 	}
-	return isSameTree(invertTree(root.Left), root.Right)
+
+	return recur(root.Left, root.Right)
+}
+
+func recur(left, right *TreeNode) bool {
+	if left == nil && right == nil {
+		return true
+	}
+
+	if left == nil || right == nil {
+		return false
+	}
+
+	return left.Val == right.Val && recur(left.Left, right.Right) && recur(left.Right, right.Left)
 }
